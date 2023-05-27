@@ -1,0 +1,12 @@
+[
+  {
+    "id": "ACT_TEMPTATION",
+    "type": "activity_type",
+    "activity_level": "ACTIVE_EXERCISE",
+    "verb": "* しばらくお待ちください... *",
+    "based_on": "time",
+    "interruptable": false,
+    "suspendable": false,
+    "interruptable_with_kb": false
+  }
+]

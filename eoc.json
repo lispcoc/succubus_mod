@@ -1,0 +1,118 @@
+[
+  {
+    "type": "effect_on_condition",
+    "id": "ECO_succubus_frustration",
+    "recurrence": "1 hours",
+    "condition":{ "u_has_trait": "SUCCUBUS" },
+    "deactivate_condition": { "not": { "u_has_trait": "SUCCUBUS" } },
+    "effect": [
+      { "u_add_effect": "frustration", "duration": "2 hours" }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_CALCULATE_SUCCUBUC_SPELL_DIFFICULTY",
+    "//": "呪文の評価式(呪文はNPCとプレイヤーの扱いが逆なので注意)",
+    "condition": { "expects_vars": [ "base_difficulty" ] },
+    "effect": [
+      { "math": [ "succubus_rhs", "=", "u_val('intelligence')" ] },
+      {
+        "run_eocs": [
+          {
+            "id": "EOC_CALCULATE_SUCCUBUC_SPELL_DIFFICULTY_is_hostile",
+            "//": "敵対状態による補正",
+            "condition": "u_hostile",
+            "effect": { "math": [ "succubus_rhs", "+=", "8" ] }
+          }
+        ]
+      },
+      { "math": [ "succubus_lhs", "=", "n_skill('temptation') + rand(5) + rand(5) + 2" ] },
+      {
+        "run_eocs": [
+          {
+            "id": "EOC_CALCULATE_SUCCUBUC_SPELL_DIFFICULTY_positive_trust",
+            "//": "信頼(trust)による補正",
+            "condition": { "math": [ "u_val('npc_trust')", ">=", "10" ] },
+            "effect": { "math": [ "succubus_lhs", "+=", "2" ] }
+          },
+          {
+            "id": "EOC_CALCULATE_SUCCUBUC_SPELL_DIFFICULTY_negative_trust",
+            "//": "信頼(trust)による補正",
+            "condition": { "math": [ "u_val('npc_trust')", "<", "0" ] },
+            "effect": { "math": [ "succubus_lhs", "-=", "2" ] }
+          },
+          {
+            "id": "EOC_CALCULATE_SUCCUBUC_SPELL_DIFFICULTY_has_PRETTY",
+            "//": "特質による補正",
+            "condition": { "npc_has_trait": "PRETTY" },
+            "effect": { "math": [ "succubus_lhs", "+=", "2" ] }
+          },
+          {
+            "id": "EOC_CALCULATE_SUCCUBUC_SPELL_DIFFICULTY_has_BEAUTIFUL",
+            "//": "特質による補正",
+            "condition": { "npc_has_trait": "BEAUTIFUL" },
+            "effect": { "math": [ "succubus_lhs", "+=", "4" ] }
+          },
+          {
+            "id": "EOC_CALCULATE_SUCCUBUC_SPELL_DIFFICULTY_has_BEAUTIFUL2",
+            "//": "特質による補正",
+            "condition": { "npc_has_trait": "BEAUTIFUL2" },
+            "effect": { "math": [ "succubus_lhs", "+=", "6" ] }
+          },
+          {
+            "id": "EOC_CALCULATE_SUCCUBUC_SPELL_DIFFICULTY_has_BEAUTIFUL3",
+            "//": "特質による補正",
+            "condition": { "npc_has_trait": "BEAUTIFUL3" },
+            "effect": { "math": [ "succubus_lhs", "+=", "8" ] }
+          },
+          {
+            "id": "EOC_CALCULATE_SUCCUBUC_SPELL_DIFFICULTY_preference_age_low",
+            "//": "好みによる補正",
+            "condition": { "and": [ { "u_has_trait": "preference_age_low" }, { "math": ["n_val('age')", "<=", "20" ] } ] },
+            "effect": { "math": [ "succubus_lhs", "+=", "2" ] }
+          },
+          {
+            "id": "EOC_CALCULATE_SUCCUBUC_SPELL_DIFFICULTY_preference_age_high",
+            "//": "好みによる補正",
+            "condition": { "and": [ { "u_has_trait": "preference_age_high" }, { "math": ["n_val('age')", ">=", "25" ] } ] },
+            "effect": { "math": [ "succubus_lhs", "+=", "2" ] }
+          },
+          {
+            "id": "EOC_CALCULATE_SUCCUBUC_SPELL_DIFFICULTY_preference_str_low",
+            "//": "好みによる補正",
+            "condition": { "and": [ { "u_has_trait": "preference_str_low" }, { "math": ["n_val('strength')", "<=", "7" ] } ] },
+            "effect": { "math": [ "succubus_lhs", "+=", "2" ] }
+          },
+          {
+            "id": "EOC_CALCULATE_SUCCUBUC_SPELL_DIFFICULTY_preference_str_high",
+            "//": "好みによる補正",
+            "condition": { "and": [ { "u_has_trait": "preference_str_high" }, { "math": ["n_val('strength')", ">=", "10" ] } ] },
+            "effect": { "math": [ "succubus_lhs", "+=", "2" ] }
+          },
+          {
+            "id": "EOC_CALCULATE_SUCCUBUC_SPELL_DIFFICULTY_preference_fancy",
+            "//": "好みによる補正",
+            "condition": {
+              "and": [
+                { "u_has_trait": "preference_fancy" },
+                { "or": [
+                  { "npc_has_worn_with_flag": "FANCY" },
+                  { "npc_has_worn_with_flag": "SUPER_FANCY" }
+                ] }
+              ]
+            },
+            "effect": { "math": [ "succubus_lhs", "+=", "2" ] }
+          },
+          {
+            "id": "EOC_CALCULATE_SUCCUBUC_SPELL_DIFFICULTY_preference_glasses",
+            "//": "好みによる補正",
+            "condition": { "and": [ { "u_has_trait": "preference_glasses" }, { "npc_has_item_category": "glasses" } ] },
+            "effect": { "math": [ "succubus_lhs", "+=", "2" ] }
+          }
+        ]
+      },
+      { "run_eoc_with": "EOC_SUCCUBUC_DMSG", "variables": { "msg": "難易度: <global_val:succubus_rhs>" } },
+      { "run_eoc_with": "EOC_SUCCUBUC_DMSG", "variables": { "msg": "成功度: <global_val:succubus_lhs>" } }
+    ]
+  }
+]

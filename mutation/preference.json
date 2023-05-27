@@ -1,0 +1,79 @@
+[
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_set_preference",
+    "//": "好みの設定",
+    "condition": { "not": { "u_has_var": "u_has_any_preference", "type": "general", "context": "succubus", "value": "yes" } },
+    "effect": [
+      { "u_add_var": "u_has_any_preference", "type": "general", "context": "succubus", "value": "yes" },
+      { "weighted_list_eocs": [
+        [ { "id": "preference_age_low", "effect": { "u_add_trait": "preference_age_low" } }, { "const": 1 } ],
+        [ { "id": "preference_age_high", "effect": { "u_add_trait": "preference_age_high" } }, { "const": 1 } ],
+        [ { "id": "preference_str_low", "effect": { "u_add_trait": "preference_str_low" } }, { "const": 1 } ],
+        [ { "id": "preference_str_high", "effect": { "u_add_trait": "preference_str_high" } }, { "const": 1 } ],
+        [ { "id": "preference_fancy", "effect": { "u_add_trait": "preference_fancy" } }, { "const": 1 } ],
+        [ { "id": "preference_glasses", "effect": { "u_add_trait": "preference_glasses" } }, { "const": 1 } ]
+      ] }
+    ]
+  },
+  {
+    "type": "mutation",
+    "id": "preference_age_low",
+    "name": { "str": "好み(若い)" },
+    "category": [ "PREFERENCE" ],
+    "description": "",
+    "points": 0,
+    "starting_trait": false,
+    "valid": false
+  },
+  {
+    "type": "mutation",
+    "id": "preference_age_high",
+    "name": { "str": "好み(大人)" },
+    "category": [ "PREFERENCE" ],
+    "description": "",
+    "points": 0,
+    "starting_trait": false,
+    "valid": false
+  },
+  {
+    "type": "mutation",
+    "id": "preference_str_low",
+    "name": { "str": "好み(細身)" },
+    "category": [ "PREFERENCE" ],
+    "description": "",
+    "points": 0,
+    "starting_trait": false,
+    "valid": false
+  },
+  {
+    "type": "mutation",
+    "id": "preference_str_high",
+    "name": { "str": "好み(筋肉質)" },
+    "category": [ "PREFERENCE" ],
+    "description": "",
+    "points": 0,
+    "starting_trait": false,
+    "valid": false
+  },
+  {
+    "type": "mutation",
+    "id": "preference_fancy",
+    "name": { "str": "好み(お洒落)" },
+    "category": [ "PREFERENCE" ],
+    "description": "",
+    "points": 0,
+    "starting_trait": false,
+    "valid": false
+  },
+  {
+    "type": "mutation",
+    "id": "preference_glasses",
+    "name": { "str": "好み(眼鏡)" },
+    "category": [ "PREFERENCE" ],
+    "description": "",
+    "points": 0,
+    "starting_trait": false,
+    "valid": false
+  }
+]

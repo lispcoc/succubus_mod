@@ -1,0 +1,20 @@
+[
+  {
+    "type": "MOD_INFO",
+    "id": "succubus",
+    "name": "追加 - サキュバス変異",
+    "authors": [ "LISPCOC" ],
+    "maintainers": [ "LISPCOC" ],
+    "description": "サキュバス変異やNPCを誘惑する要素を追加します。",
+    "category": "content",
+    "dependencies": [ "dda", "magiclysm" ]
+  },
+  {
+    "type": "skill",
+    "id": "temptation",
+    "name": "誘惑",
+    "display_category": "display_interaction",
+    "sort_rank": 26000,
+    "description": "他人を誘惑するふるまいに関するスキルです。特定の行為の成功率に影響します。"
+  }
+]

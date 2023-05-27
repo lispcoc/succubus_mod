@@ -1,0 +1,56 @@
+[
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_DRAIN_BASE",
+    "//": [
+      "ドレイン系の基本処理(呪文処理はnpcとuが逆になるので注意)",
+      "base_difficulty: 難易度基本値",
+      "u_effect: 自分に適用されるエフェクト",
+      "n_effect: 相手に適用されるエフェクト"
+    ],
+    "condition": { "not": { "u_has_effect": "SUCCUBUS_IMMUNITY" } },
+    "false_effect": { "npc_message": "<u_name>は誘惑に免疫があるようです。しばらく時間を置いて試す必要があるでしょう。" },
+    "effect": [
+      { "run_eocs": "EOC_set_preference" },
+      { "run_eoc_with": "EOC_CALCULATE_SUCCUBUC_SPELL_DIFFICULTY", "variables": { "base_difficulty": { "context_val": "base_difficulty" } } },
+      { "run_eocs": {
+        "id": "EOC_DRAIN_BASE_result",
+        "condition": { "math": [ "succubus_lhs", ">", "succubus_rhs" ] },
+        "false_effect": { "npc_message": "<u_name>は平気な顔をしています。あなたの誘惑に抗ったようです。" },
+        "effect": [
+          { "npc_message": "<u_name>はあなたの誘惑に屈しました...。" },
+          { "u_assign_activity": "ACT_TEMPTATION", "duration": "30 minutes" },
+          { "npc_assign_activity": "ACT_TEMPTATION", "duration": "30 minutes" },
+          { "npc_lose_effect": { "context_val": "u_effect" } },
+          { "u_lose_effect": { "context_val": "n_effect" } },
+          { "npc_add_effect": { "context_val": "u_effect" }, "duration": { "math": [ "days_to_turn(n_skill('temptation') * 3 + 1)" ] } },
+          { "u_add_effect": { "context_val": "n_effect" }, "duration": { "math": [ "days_to_turn(n_skill('temptation') * 3 + 1)" ] } },
+          { "u_add_effect": "stunned", "duration": "31 minutes" },
+          { "npc_lose_effect": "frustration" },
+          { "npc_adjust_var": "succubus_drain_succeed", "adjustment": 1 }
+        ]
+      } },
+      { "u_add_effect": "SUCCUBUS_IMMUNITY", "duration": "48 hours" }
+    ]
+  },
+  {
+    "id": "spell_drain_base",
+    "type": "SPELL",
+    "name": "ドレイン(ベース)",
+    "description": "対象を誘惑して一時的に力を奪い取ります。誘惑中は無防備になるので安全な場所で使用しましょう。一時的に免疫ができるため、同じ相手に連続して使用することはできません。",
+    "valid_targets": [ "ally", "hostile" ],
+    "flags": [ "NO_HANDS", "SILENT", "NO_FAIL", "NO_PROJECTILE" ],
+    "energy_source": "MANA",
+    "difficulty": 0,
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_DRAIN_STAT_1",
+    "shape": "blast",
+    "base_casting_time": 200,
+    "base_energy_cost": 100,
+    "min_range": 1,
+    "max_range": 1,
+    "min_duration": 0,
+    "max_duration": 0,
+    "duration_increment": 0
+  }
+]

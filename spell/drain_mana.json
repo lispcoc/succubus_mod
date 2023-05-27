@@ -1,0 +1,136 @@
+[
+  {
+    "id": "spell_drain_mana_1",
+    "type": "SPELL",
+    "copy-from": "spell_drain_base",
+    "name": "マナドレインLv1",
+    "description": "対象を誘惑して一時的にマナを奪い取ります。誘惑中は無防備になるので安全な場所で使用しましょう。一時的に免疫ができるため、同じ相手に連続して使用することはできません。",
+    "difficulty": 0,
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_DRAIN_MANA_1",
+    "max_level": 5,
+    "learn_spells": { "spell_drain_mana_2": 5 }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_DRAIN_MANA_1",
+    "effect": [ {
+        "run_eoc_with": "EOC_DRAIN_BASE",
+        "variables": { "base_difficulty": "0", "u_effect": "DRAIN_MANA_1", "n_effect": "DRAINED_MANA_1" }
+    } ]
+  },
+  {
+    "type": "effect_type",
+    "id": "DRAIN_MANA_1",
+    "name": [ "マナドレイン+1" ],
+    "desc": [ "マナを吸収して一時的に少し強化されています。" ],
+    "removes_effects": [ "DRAIN_MANA_2", "DRAIN_MANA_3" ],
+    "enchantments": [ { "values": [ { "value": "MAX_MANA", "add": 500 } ] } ],
+    "apply_message": "",
+    "remove_message": "吸収した力を失いました。また新たな得物を探しましょう。",
+    "rating": "good",
+    "show_in_info": true,
+    "show_intensity": true
+  },
+  {
+    "type": "effect_type",
+    "id": "DRAINED_MANA_1",
+    "name": [ "マナドレイン-1" ],
+    "desc": [ "マナを吸収され一時的に少し弱体化しています。" ],
+    "removes_effects": [ "DRAINED_MANA_2", "DRAINED_MANA_3" ],
+    "enchantments": [ { "values": [ { "value": "MAX_MANA", "add": -500 } ] } ],
+    "apply_message": "",
+    "remove_message": "吸収された力が戻りました。",
+    "rating": "bad",
+    "show_in_info": true,
+    "show_intensity": true
+  },
+  {
+    "id": "spell_drain_mana_2",
+    "type": "SPELL",
+    "copy-from": "spell_drain_mana_1",
+    "name": "マナドレインLv2",
+    "difficulty": 2,
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_DRAIN_MANA_2",
+    "max_level": 5,
+    "learn_spells": { "spell_drain_mana_3": 5 }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_DRAIN_MANA_2",
+    "effect": [ {
+        "run_eoc_with": "EOC_DRAIN_BASE",
+        "variables": { "base_difficulty": "2", "u_effect": "DRAIN_MANA_2", "n_effect": "DRAINED_MANA_2" }
+    } ]
+  },
+  {
+    "type": "effect_type",
+    "id": "DRAIN_MANA_2",
+    "name": [ "マナドレイン+2" ],
+    "desc": [ "マナを吸収して一時的にかなり強化されています。" ],
+    "removes_effects": [ "DRAIN_MANA_1", "DRAIN_MANA_3" ],
+    "enchantments": [ { "values": [ { "value": "MAX_MANA", "add": 1000 } ] } ],
+    "apply_message": "",
+    "remove_message": "吸収した力を失いました。また新たな得物を探しましょう。",
+    "rating": "good",
+    "show_in_info": true,
+    "show_intensity": true
+  },
+  {
+    "type": "effect_type",
+    "id": "DRAINED_MANA_2",
+    "name": [ "マナドレイン-2" ],
+    "desc": [ "マナを吸収され一時的にかなり弱体化しています。" ],
+    "removes_effects": [ "DRAINED_MANA_1", "DRAINED_MANA_3" ],
+    "enchantments": [ { "values": [ { "value": "MAX_MANA", "add": -1000 } ] } ],
+    "apply_message": "",
+    "remove_message": "吸収された力が戻りました。",
+    "rating": "bad",
+    "show_in_info": true,
+    "show_intensity": true
+  },
+  {
+    "id": "spell_drain_mana_3",
+    "type": "SPELL",
+    "copy-from": "spell_drain_mana_1",
+    "name": "マナドレインLv3",
+    "difficulty": 5,
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_DRAIN_MANA_3"
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_DRAIN_MANA_3",
+    "effect": [ {
+        "run_eoc_with": "EOC_DRAIN_BASE",
+        "variables": { "base_difficulty": "5", "u_effect": "DRAIN_MANA_3", "n_effect": "DRAINED_MANA_3" }
+    } ]
+  },
+  {
+    "type": "effect_type",
+    "id": "DRAIN_MANA_3",
+    "name": [ "マナドレイン+3" ],
+    "desc": [ "マナを吸収して一時的に大きく強化されています。" ],
+    "removes_effects": [ "DRAIN_MANA_1", "DRAIN_MANA_2" ],
+    "enchantments": [ { "values": [ { "value": "MAX_MANA", "add": 1500 } ] } ],
+    "apply_message": "",
+    "remove_message": "吸収した力を失いました。また新たな得物を探しましょう。",
+    "rating": "good",
+    "show_in_info": true,
+    "show_intensity": true
+  },
+  {
+    "type": "effect_type",
+    "id": "DRAINED_MANA_3",
+    "name": [ "マナドレイン-3" ],
+    "desc": [ "マナを吸収され一時的に大きく弱体化しています。" ],
+    "removes_effects": [ "DRAINED_MANA_1", "DRAINED_MANA_2" ],
+    "enchantments": [ { "values": [ { "value": "MAX_MANA", "add": -1500 } ] } ],
+    "apply_message": "",
+    "remove_message": "吸収された力が戻りました。",
+    "rating": "bad",
+    "show_in_info": true,
+    "show_intensity": true
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "type": "effect_on_condition",
+    "id": "EVENT_succubus_game_begin",
+    "eoc_type": "EVENT",
+    "required_event": "game_begin",
+    "effect": [
+      { "run_eocs": [
+        {
+          "id": "EOC_succubus_drain_succeed_init",
+          "condition": { "not": { "u_has_var": "succubus_drain_succeed", "type": "counter" } },
+          "effect": [
+            { "u_add_var": "succubus_drain_succeed", "value": "0" }
+          ]
+        }
+      ] }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EVENT_succubus_game_load",
+    "eoc_type": "EVENT",
+    "required_event": "game_load",
+    "effect": [
+      { "run_eocs": [
+        "EOC_succubus_drain_succeed_init"
+      ] }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EVENT_succubus_u_var_changed",
+    "eoc_type": "EVENT",
+    "required_event": "u_var_changed",
+    "effect": [
+      { "u_message": { "context_val": "var" } },
+      { "u_message": { "context_val": "value" } },
+      { "run_eocs": [
+        {
+          "id": "EOC_temptation_level_up",
+          "condition": { "and": [
+            { "compare_num": [
+                { "u_val": "var", "var_name": "succubus_drain_succeed" },
+                ">=",
+                { "math": [ "(u_skill('temptation') + 1) ^ 2" ]}
+            ] },
+            { "compare_num": [ { "const": 10 }, ">", { "math": [ "u_skill('temptation')" ] } ] }
+          ] },
+          "effect": [
+            { "math": [ "u_skill('temptation')", "+=", "1" ] },
+            { "u_message": "<color_light_green>あなたは他人を誘惑するのが上手くなりました。</color>" }
+          ]
+        }
+      ] }
+    ]
+  }
+]

@@ -1,0 +1,137 @@
+[
+  {
+    "id": "spell_drain_stat_1",
+    "type": "SPELL",
+    "copy-from": "spell_drain_base",
+    "name": "パワードレインLv1",
+    "description": "対象を誘惑して一時的に力を奪い取ります。誘惑中は無防備になるので安全な場所で使用しましょう。一時的に免疫ができるため、同じ相手に連続して使用することはできません。",
+    "energy_source": "MANA",
+    "difficulty": 0,
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_DRAIN_STAT_1",
+    "max_level": 5,
+    "learn_spells": { "spell_drain_stat_2": 5 }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_DRAIN_STAT_1",
+    "effect": [ {
+      "run_eoc_with": "EOC_DRAIN_BASE",
+      "variables": { "base_difficulty": "0", "u_effect": "DRAIN_STAT_1", "n_effect": "DRAINED_STAT_1" }
+    } ]
+  },
+  {
+    "type": "effect_type",
+    "id": "DRAIN_STAT_1",
+    "name": [ "パワードレイン+1" ],
+    "desc": [ "能力を吸収して一時的に少し強化されています。" ],
+    "removes_effects": [ "DRAIN_STAT_2", "DRAIN_STAT_3" ],
+    "enchantments": [ { "values": [ { "value": "STRENGTH", "add": 1 }, { "value": "DEXTERITY", "add": 1 } ] } ],
+    "apply_message": "",
+    "remove_message": "吸収した力を失いました。また新たな得物を探しましょう。",
+    "rating": "good",
+    "show_in_info": true,
+    "show_intensity": true
+  },
+  {
+    "type": "effect_type",
+    "id": "DRAINED_STAT_1",
+    "name": [ "パワードレイン-1" ],
+    "desc": [ "能力を吸収され一時的に少し弱体化しています。" ],
+    "removes_effects": [ "DRAINED_STAT_2", "DRAINED_STAT_3" ],
+    "enchantments": [ { "values": [ { "value": "STRENGTH", "add": -1 }, { "value": "DEXTERITY", "add": -1 } ] } ],
+    "apply_message": "",
+    "remove_message": "吸収された力が戻りました。",
+    "rating": "bad",
+    "show_in_info": true,
+    "show_intensity": true
+  },
+  {
+    "id": "spell_drain_stat_2",
+    "type": "SPELL",
+    "copy-from": "spell_drain_stat_1",
+    "name": "パワードレインLv2",
+    "difficulty": 2,
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_DRAIN_STAT_2",
+    "max_level": 5,
+    "learn_spells": { "spell_drain_stat_3": 5 }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_DRAIN_STAT_2",
+    "effect": [ {
+        "run_eoc_with": "EOC_DRAIN_BASE",
+        "variables": { "base_difficulty": "2", "u_effect": "DRAIN_STAT_2", "n_effect": "DRAINED_STAT_2" }
+    } ]
+  },
+  {
+    "type": "effect_type",
+    "id": "DRAIN_STAT_2",
+    "name": [ "パワードレイン+2" ],
+    "desc": [ "能力を吸収して一時的にかなり強化されています。" ],
+    "removes_effects": [ "DRAIN_STAT_1", "DRAIN_STAT_3" ],
+    "enchantments": [ { "values": [ { "value": "STRENGTH", "add": 2 }, { "value": "DEXTERITY", "add": 2 } ] } ],
+    "apply_message": "",
+    "remove_message": "吸収した力を失いました。また新たな得物を探しましょう。",
+    "rating": "good",
+    "show_in_info": true,
+    "show_intensity": true
+  },
+  {
+    "type": "effect_type",
+    "id": "DRAINED_STAT_2",
+    "name": [ "パワードレイン-2" ],
+    "desc": [ "能力を吸収され一時的にかなり弱体化しています。" ],
+    "removes_effects": [ "DRAINED_STAT_1", "DRAINED_STAT_3" ],
+    "enchantments": [ { "values": [ { "value": "STRENGTH", "add": -2 }, { "value": "DEXTERITY", "add": -2 } ] } ],
+    "apply_message": "",
+    "remove_message": "吸収された力が戻りました。",
+    "rating": "bad",
+    "show_in_info": true,
+    "show_intensity": true
+  },
+  {
+    "id": "spell_drain_stat_3",
+    "type": "SPELL",
+    "copy-from": "spell_drain_stat_1",
+    "name": "パワードレインLv3",
+    "difficulty": 5,
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_DRAIN_STAT_3"
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_DRAIN_STAT_3",
+    "effect": [ {
+        "run_eoc_with": "EOC_DRAIN_BASE",
+        "variables": { "base_difficulty": "5", "u_effect": "DRAIN_STAT_3", "n_effect": "DRAINED_STAT_3" }
+    } ]
+  },
+  {
+    "type": "effect_type",
+    "id": "DRAIN_STAT_3",
+    "name": [ "パワードレイン+3" ],
+    "desc": [ "能力を吸収して一時的に大きく強化されています。" ],
+    "removes_effects": [ "DRAIN_STAT_1", "DRAIN_STAT_2" ],
+    "enchantments": [ { "values": [ { "value": "STRENGTH", "add": 3 }, { "value": "DEXTERITY", "add": 3 } ] } ],
+    "apply_message": "",
+    "remove_message": "吸収した力を失いました。また新たな得物を探しましょう。",
+    "rating": "good",
+    "show_in_info": true,
+    "show_intensity": true
+  },
+  {
+    "type": "effect_type",
+    "id": "DRAINED_STAT_3",
+    "name": [ "パワードレイン-3" ],
+    "desc": [ "能力を吸収され一時的に大きく弱体化しています。" ],
+    "removes_effects": [ "DRAINED_STAT_1", "DRAINED_STAT_2" ],
+    "enchantments": [ { "values": [ { "value": "STRENGTH", "add": -3 }, { "value": "DEXTERITY", "add": -3 } ] } ],
+    "apply_message": "",
+    "remove_message": "吸収された力が戻りました。",
+    "rating": "bad",
+    "show_in_info": true,
+    "show_intensity": true
+  }
+]

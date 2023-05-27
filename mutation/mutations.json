@@ -1,0 +1,13 @@
+[
+  {
+    "type": "mutation",
+    "id": "SUCCUBUS",
+    "name": { "str": "サキュバス" },
+    "points": 2,
+    "visibility": 1,
+    "description": "アニメに登場する悪魔のような尻尾、角や小さな羽が生え、他人を誘惑する能力が使えるようになります。",
+    "spells_learned": [ [ "spell_drain_stat_1", 0 ], [ "spell_drain_mana_1", 0 ] ],
+    "starting_trait": false,
+    "valid": false
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "type": "profession",
+    "id": "succubus_mod_test",
+    "name": "サキュバス",
+    "description": "これも大変動の影響なのか、アニメに現れる悪魔のような姿になってしまいました。他人を誘惑する能力が備わりましたが、これを使わないよう自制するには強靭な理性が必要になるでしょう。",
+    "points": 4,
+    "traits": [ "SUCCUBUS" ],
+    "items": {
+      "both": {
+        "items": [ "jeans", "longshirt", "socks", "sneakers", "mbag", "pockknife", "water_clean", "wristwatch" ],
+        "entries": [ { "group": "charged_smart_phone" }, { "group": "charged_matches" } ]
+      },
+      "male": [ "boxer_shorts" ],
+      "female": [ "bra", "panties" ]
+    }
+  }
+]

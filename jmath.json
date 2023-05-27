@@ -1,0 +1,7 @@
+[  {
+    "type": "jmath_function",
+    "id": "days_to_turn",
+    "num_args": 1,
+    "return": "_0 * 86400"
+  }
+]

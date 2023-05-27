@@ -1,0 +1,39 @@
+[
+  {
+    "type": "jmath_function",
+    "id": "succubus_debug_enable",
+    "num_args": 0,
+    "return": "1"
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_SUCCUBUC_DMSG",
+    "condition": { "math": [ "succubus_debug_enable()", "!=", "0" ] },
+    "effect": [
+      { "u_message": { "context_val": "msg" } },
+      { "npc_message": { "context_val": "msg" } }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "SUCCUBUS_EOC_on_gains_effect",
+    "eoc_type": "EVENT",
+    "required_event": "character_gains_effect",
+    "condition": { "math": [ "succubus_debug_enable()", "!=", "0" ] },
+    "effect": [
+      { "u_message": "[DBG]Gain Effect:" },
+      { "u_message": { "context_val": "effect" } }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "SUCCUBUS_EOC_on_loses_effect",
+    "eoc_type": "EVENT",
+    "required_event": "character_loses_effect",
+    "condition": { "math": [ "succubus_debug_enable()", "!=", "0" ] },
+    "effect": [
+      { "u_message": "[DBG]Lose Effect:" },
+      { "u_message": { "context_val": "effect" } }
+    ]
+  }
+]

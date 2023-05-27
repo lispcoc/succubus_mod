@@ -1,0 +1,10 @@
+[
+  {
+    "type": "effect_type",
+    "id": "DRAIN_SOUL",
+    "//": "ダミーエフェクト",
+    "max_duration": 1,
+    "show_in_info": false,
+    "show_intensity": false
+  }
+]

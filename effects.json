@@ -1,0 +1,34 @@
+[
+  {
+    "type": "effect_type",
+    "id": "frustration",
+    "name": [ "欲求不満(なし)", "欲求不満(軽度)", "欲求不満(中度)", "欲求不満(重度)", "欲求不満(危険)", "欲求不満(末期)" ],
+    "desc": [
+      "あなたの欲求は満たされています。当分は精気を必要としません。",
+      "少し欲求不満気味ですが、まだ気になるほどではありません。",
+      "明らかに欲求不満を感じますが、なんとか我慢できる程度です。",
+      "そろそろ誰かから精気を奪うことを考えたほうが良いかもしれません。",
+      "一刻も早く誰かを襲わなければなりません。",
+      "一刻も早く誰かを襲わなければなりません。"
+    ],
+    "apply_message": "",
+    "remove_message": "あなたの欲求は満たされました。",
+    "max_intensity": 6,
+    "int_dur_factor": "7 days",
+    "max_duration": "42 days",
+    "scaling_mods": { "int_mod": [ -2 ], "str_mod": [ -0.25 ], "dex_mod": [ -0.25 ], "per_mod": [ -0.25 ] },
+    "show_in_info": true,
+    "show_intensity": true
+  },
+  {
+    "type": "effect_type",
+    "id": "SUCCUBUS_IMMUNITY",
+    "name": [ "免疫(誘惑)" ],
+    "desc": [ "一時的に誘惑を無効化します。" ],
+    "apply_message": "",
+    "remove_message": "",
+    "rating": "good",
+    "show_in_info": true,
+    "show_intensity": false
+  }
+]
