@@ -33,8 +33,6 @@
     "eoc_type": "EVENT",
     "required_event": "u_var_changed",
     "effect": [
-      { "u_message": { "context_val": "var" } },
-      { "u_message": { "context_val": "value" } },
       { "run_eocs": [
         {
           "id": "EOC_temptation_level_up",
