@@ -10,27 +10,75 @@
     "type": "event_statistic",
     "stat_type": "count",
     "event_transformation": "succubus_drain_succeed_change",
-    "description": { "str_sp": "誘惑に成功した回数" }
+    "description": { "str_sp": "回誘惑に成功した" }
+  },
+  {
+    "id": "total_succubus_drain_succeed_10",
+    "type": "event_transformation",
+    "event_type": "u_var_changed",
+    "value_constraints": {
+      "var": { "equals": [ "string", "succubus_drain_succeed" ] },
+      "value": { "equals": [ "string", "10" ] }
+    },
+    "drop_fields": [ "var", "value" ]
+  },
+  {
+    "id": "total_succubus_drain_succeed_10",
+    "type": "event_statistic",
+    "stat_type": "count",
+    "event_transformation": "total_succubus_drain_succeed_10"
+  },
+  {
+    "id": "total_succubus_drain_succeed_50",
+    "type": "event_transformation",
+    "event_type": "u_var_changed",
+    "value_constraints": {
+      "var": { "equals": [ "string", "succubus_drain_succeed" ] },
+      "value": { "equals": [ "string", "50" ] }
+    },
+    "drop_fields": [ "var", "value" ]
+  },
+  {
+    "id": "total_succubus_drain_succeed_50",
+    "type": "event_statistic",
+    "stat_type": "count",
+    "event_transformation": "total_succubus_drain_succeed_50"
+  },
+  {
+    "id": "total_succubus_drain_succeed_100",
+    "type": "event_transformation",
+    "event_type": "u_var_changed",
+    "value_constraints": {
+      "var": { "equals": [ "string", "succubus_drain_succeed" ] },
+      "value": { "equals": [ "string", "100" ] }
+    },
+    "drop_fields": [ "var", "value" ]
+  },
+  {
+    "id": "total_succubus_drain_succeed_100",
+    "type": "event_statistic",
+    "stat_type": "count",
+    "event_transformation": "total_succubus_drain_succeed_100"
   },
   {
     "id": "achievement_total_succubus_drain_succeed_10",
     "type": "achievement",
     "name": "10人斬り",
     "description": "何人もあなたの魅力に抗うことはできない。相手が人間であれば...。",
-    "requirements": [ { "event_statistic": "total_succubus_drain_succeed", "is": ">=", "target": 10, "description": "誘惑に10回成功する" } ]
+    "requirements": [ { "event_statistic": "total_succubus_drain_succeed_10", "is": ">=", "target": 1, "description": "誘惑に10回成功する" } ]
   },
   {
     "id": "achievement_total_succubus_drain_succeed_50",
     "type": "achievement",
     "name": "50人斬り",
     "description": "あなたの魅力はもはやニューイングランド中の人々が知るところだ。",
-    "requirements": [ { "event_statistic": "total_succubus_drain_succeed", "is": ">=", "target": 50, "description": "誘惑に50回成功する" } ]
+    "requirements": [ { "event_statistic": "total_succubus_drain_succeed_50", "is": ">=", "target": 1, "description": "誘惑に50回成功する" } ]
   },
   {
     "id": "achievement_total_succubus_drain_succeed_100",
     "type": "achievement",
     "name": "100人斬り",
     "description": "世紀末にハーレムを築いた。",
-    "requirements": [ { "event_statistic": "total_succubus_drain_succeed", "is": ">=", "target": 100, "description": "誘惑に100回成功する" } ]
+    "requirements": [ { "event_statistic": "total_succubus_drain_succeed_100", "is": ">=", "target": 1, "description": "誘惑に100回成功する" } ]
   }
 ]

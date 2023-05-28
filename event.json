@@ -10,7 +10,7 @@
           "id": "EOC_succubus_drain_succeed_init",
           "condition": { "not": { "u_has_var": "succubus_drain_succeed", "type": "counter" } },
           "effect": [
-            { "u_add_var": "succubus_drain_succeed", "value": "0" }
+            { "u_add_var": "succubus_drain_succeed", "value": "0", "type": "counter" }
           ]
         }
       ] }
@@ -38,7 +38,7 @@
           "id": "EOC_temptation_level_up",
           "condition": { "and": [
             { "compare_num": [
-                { "u_val": "var", "var_name": "succubus_drain_succeed" },
+                { "u_val": "var", "var_name": "succubus_drain_succeed", "type": "counter" },
                 ">=",
                 { "math": [ "(u_skill('temptation') + 1) ^ 2" ]}
             ] },

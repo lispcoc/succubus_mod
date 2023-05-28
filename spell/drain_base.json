@@ -27,7 +27,7 @@
           { "u_add_effect": { "context_val": "n_effect" }, "duration": { "math": [ "days_to_turn(n_skill('temptation') * 3 + 1)" ] } },
           { "u_add_effect": "stunned", "duration": "31 minutes" },
           { "npc_lose_effect": "frustration" },
-          { "npc_adjust_var": "succubus_drain_succeed", "adjustment": 1 }
+          { "npc_adjust_var": "succubus_drain_succeed", "type": "counter", "adjustment": 1 }
         ]
       } },
       { "u_add_effect": "SUCCUBUS_IMMUNITY", "duration": "48 hours" }
